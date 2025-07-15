@@ -1,28 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EbuEğitim</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EbuEğitim</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById("dropdownToggle");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      const mobileToggle = document.getElementById("mobileToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      toggleBtn.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("hidden");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!toggleBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.classList.add("hidden");
+        }
+      });
+
+      mobileToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    });
+  </script>
 </head>
 <body>
-    <header style="background-color: oklch(52% 0.105 223.128);" class="text-white py-4 px-6">
-        <div class="flex justify-center space-x-24">
-          <nav class="flex items-center space-x-24">
-            <a href="#" class="font-semibold">Kurslar</a>
-            <a href="#" class="font-semibold">Eğitimler</a>
-            <a href="#" class="font-semibold">Blog</a>
-          </nav>
-          <div class="flex items-center space-x-12">
-            <img src="/images/site.png" class="h-30">
+  <header style="background-color: oklch(80.9% 0.105 251.813)" class="text-white py-4 px-6">
+    <div class="hidden md:flex items-center justify-center space-x-12">
+      <nav class="flex items-center space-x-26 relative">
+        <a href="#" class="font-semibold hover:text-sky-800">Kurslar</a>
+        <a href="#" class="font-semibold hover:text-sky-800">Eğitimler</a>
+        <a href="#" class="font-semibold hover:text-sky-800">Blog</a>
+      </nav>
+      <div class="flex-shrink-0 px-6">
+        <img src="/image/header-1-2-3/site.png" class="h-14 mx-auto" alt="Logo" />
+      </div>
+      <nav class="flex items-center space-x-26 relative">
+        <div class="relative">
+          <button id="dropdownToggle" class="font-semibold hover:text-sky-800 focus:outline-none">Hakkımızda</button>
+          <div id="dropdownMenu" class="absolute hidden bg-white text-sky-800 shadow-md rounded-md mt-2 min-w-[150px] z-10">
+            <a href="#" class="block px-4 py-2 hover:bg-sky-100">Vizyonumuz</a>
+            <a href="#" class="block px-4 py-2 hover:bg-sky-100">Ekibimiz</a>
+            <a href="#" class="block px-4 py-2 hover:bg-sky-100">Tarihçemiz</a>
           </div>
-          <nav class="flex items-center space-x-24">
-            <a href="#" class="font-semibold">Hakkımızda</a>
-            <a href="#" class="font-semibold">İletişim</a>
-            <button class="bg-white text-black font-semibold px-4 py-2 rounded-md hover:bg-gray-100 transition cursor-pointer">Giriş</button>
-          </nav>
         </div>
-    </header>
+        <a href="#" class="font-semibold hover:text-sky-800">İletişim</a>
+        <button class="bg-white text-sky-800 font-semibold px-4 py-2 rounded-md hover:bg-sky-700 hover:text-white transition">Giriş</button>
+      </nav>
+    </div>
+    <div class="flex justify-between items-center md:hidden">
+      <div class="flex-1 text-center">
+        <img src="/image/header-1-2-3/site.png" class="h-12 mx-auto" alt="Logo" />
+      </div>
+      <div>
+        <button id="mobileToggle" class="text-white focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-4 text-center">
+      <a href="#" class="block font-semibold hover:text-sky-800">Kurslar</a>
+      <a href="#" class="block font-semibold hover:text-sky-800">Eğitimler</a>
+      <a href="#" class="block font-semibold hover:text-sky-800">Blog</a>
+      <a href="#" class="block font-semibold hover:text-sky-800">Hakkımızda</a>
+      <a href="#" class="block font-semibold hover:text-sky-800">İletişim</a>
+      <button class="w-full bg-white text-sky-800 font-semibold px-6 py-2 rounded-md hover:bg-sky-700 hover:text-white transition">Giriş</button>
+    </div>
+  </header>
+  <div class="fixed bottom-6 right-6 z-50">
+    <button
+      class="bg-sky-600 hover:bg-sky-700 text-white p-4 rounded-full shadow-lg transition duration-300"
+      title="Canlı Destek"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+           viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+           class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+      </svg>
+    </button>
+  </div>
 </body>
 </html>
